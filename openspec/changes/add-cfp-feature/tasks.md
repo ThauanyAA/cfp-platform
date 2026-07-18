@@ -7,9 +7,9 @@
 
 ## 2. Frontend Angular Component and Signal State
 
-- [ ] 2.1 Create the Standalone Component `CfpFormComponent` in the frontend application.
-- [ ] 2.2 Implement form controls using Angular Signals for state management and validation.
-- [ ] 2.3 Apply WAI-ARIA accessibility markers (`aria-required`, `aria-invalid`, `aria-describedby`, etc.) to the HTML template.
-- [ ] 2.4 Create a frontend service to handle POST submission to `/api/cfp` using Angular `HttpClient`.
-- [ ] 2.5 Configure router to map `/cfp` path to the new standalone `CfpFormComponent` in `app.routes.ts`.
-- [ ] 2.6 Write Jest tests to validate component initial state and button disabled/enabled behavior based on the Signals validation state.
+- [x] 2.1 Create the Standalone Component `CfpFormComponent` in the frontend application.
+- [x] 2.2 Implement form controls using Angular Signals for state management and validation.
+- [x] 2.3 Apply WAI-ARIA accessibility markers (`aria-required`, `aria-invalid`, `aria-describedby`, etc.) to the HTML template.
+- [x] 2.4 Create a frontend service to handle POST submission to `/api/cfp` using Angular `HttpClient`.
+- [x] 2.5 Configure router to map `/cfp` path to the new standalone `CfpFormComponent` in `app.routes.ts`.
+- [x] 2.6 Write Jest tests to validate component initial state and button disabled/enabled behavior based on the Signals validation state.
