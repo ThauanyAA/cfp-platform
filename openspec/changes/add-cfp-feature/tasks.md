@@ -1,9 +1,9 @@
 ## 1. Backend NestJS API Setup and Validation
 
-- [ ] 1.1 Create the backend DTO class `CreateSpeakerDto` implementing `SpeakerDTO` with `class-validator` decorators.
-- [ ] 1.2 Implement NestJS Controller and Service for CFP endpoint at POST `/api/cfp`.
-- [ ] 1.3 Ensure the `ValidationPipe` is active globally in backend `main.ts` to filter incoming payloads automatically.
-- [ ] 1.4 Write Jest tests verifying that invalid payloads (e.g. invalid email format, empty name) are rejected with a `400 Bad Request` response.
+- [x] 1.1 Create the backend DTO class `CreateSpeakerDto` implementing `SpeakerDTO` with `class-validator` decorators.
+- [x] 1.2 Implement NestJS Controller and Service for CFP endpoint at POST `/api/cfp`.
+- [x] 1.3 Ensure the `ValidationPipe` is active globally in backend `main.ts` to filter incoming payloads automatically.
+- [x] 1.4 Write Jest tests verifying that invalid payloads (e.g. invalid email format, empty name) are rejected with a `400 Bad Request` response.
 
 ## 2. Frontend Angular Component and Signal State
 
