@@ -1,0 +1,138 @@
+<div class="cfp-container">
+  <div class="cfp-card">
+    <header class="cfp-header">
+      <h1>Cadastro de Evento</h1>
+      <p class="cfp-subtitle">Cadastre um novo local para o nosso evento de tecnologia.</p>
+    </header>
+
+    <!-- Success Message -->
+    @if (submitSuccess()) {
+      <div class="alert alert-success" role="alert" aria-live="polite">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="alert-icon" aria-hidden="true">
+          <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+        </svg>
+        <div>
+          <h2 class="alert-title">Cadastro Concluído!</h2>
+          <p>Seu evento foi cadastrado com sucesso.</p>
+        </div>
+      </div>
+    }
+
+    <!-- Error Message -->
+    @if (submitError()) {
+      <div class="alert alert-danger" role="alert" aria-live="assertive">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="alert-icon" aria-hidden="true">
+          <path fill-rule="evenodd" d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003zM12 8.25a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V9a.75.75 0 01.75-.75zm0 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z" clip-rule="evenodd" />
+        </svg>
+        <div>
+          <h2 class="alert-title">Erro no Cadastro</h2>
+          <p>{{ submitError() }}</p>
+        </div>
+      </div>
+    }
+
+    <form [formGroup]="eventForm" (ngSubmit)="onSubmit()" novalidate class="cfp-form">
+      <!-- Name Field -->
+      <div class="form-group" [class.has-error]="nameControl?.touched && nameControl?.invalid">
+        <label for="name" class="form-label">
+          Nome do Evento <span class="required-indicator" aria-hidden="true">*</span>
+        </label>
+        <div class="input-wrapper">
+          <input
+            id="name"
+            type="text"
+            formControlName="name"
+            [attr.aria-required]="true"
+            [attr.aria-invalid]="(nameControl?.touched && nameControl?.invalid) ? 'true' : 'false'"
+            placeholder="Digite o nome do evento"
+            class="form-control"
+          />
+        </div>
+        @if (nameControl?.touched && nameControl?.errors?.['required']) {
+          <span class="error-message" role="alert">Nome é obrigatório.</span>
+        }
+      </div>
+
+      <!-- Address Field -->
+      <div class="form-group" [class.has-error]="addressControl?.touched && addressControl?.invalid">
+        <label for="address" class="form-label">
+          Endereço <span class="required-indicator" aria-hidden="true">*</span>
+        </label>
+        <div class="input-wrapper">
+          <input
+            id="address"
+            type="text"
+            formControlName="address"
+            [attr.aria-required]="true"
+            [attr.aria-invalid]="(addressControl?.touched && addressControl?.invalid) ? 'true' : 'false'"
+            placeholder="Digite o endereço do local"
+            class="form-control"
+          />
+        </div>
+        @if (addressControl?.touched && addressControl?.errors?.['required']) {
+          <span class="error-message" role="alert">Endereço é obrigatório.</span>
+        }
+      </div>
+
+      <!-- Capacity Field -->
+      <div class="form-group" [class.has-error]="capacityControl?.touched && capacityControl?.invalid">
+        <label for="capacity" class="form-label">
+          Capacidade <span class="required-indicator" aria-hidden="true">*</span>
+        </label>
+        <div class="input-wrapper">
+          <input
+            id="capacity"
+            type="number"
+            formControlName="capacity"
+            [attr.aria-required]="true"
+            [attr.aria-invalid]="(capacityControl?.touched && capacityControl?.invalid) ? 'true' : 'false'"
+            placeholder="Ex: 100"
+            class="form-control"
+          />
+        </div>
+        @if (capacityControl?.touched && capacityControl?.errors?.['required']) {
+          <span class="error-message" role="alert">Capacidade é obrigatória.</span>
+        }
+        @if (capacityControl?.touched && capacityControl?.errors?.['min']) {
+          <span class="error-message" role="alert">Capacidade deve ser maior que zero.</span>
+        }
+      </div>
+
+      <!-- Date Field -->
+      <div class="form-group" [class.has-error]="dateControl?.touched && dateControl?.invalid">
+        <label for="date" class="form-label">
+          Data do Evento <span class="required-indicator" aria-hidden="true">*</span>
+        </label>
+        <div class="input-wrapper">
+          <input
+            id="date"
+            type="date"
+            formControlName="date"
+            [attr.aria-required]="true"
+            [attr.aria-invalid]="(dateControl?.touched && dateControl?.invalid) ? 'true' : 'false'"
+            class="form-control"
+          />
+        </div>
+        @if (dateControl?.touched && dateControl?.errors?.['required']) {
+          <span class="error-message" role="alert">Data é obrigatória.</span>
+        }
+      </div>
+
+      <!-- Submit Button -->
+      <div class="form-actions">
+        <button
+          type="submit"
+          [disabled]="eventForm.invalid || isSubmitting()"
+          class="btn btn-submit"
+        >
+          @if (isSubmitting()) {
+            <span class="spinner" aria-hidden="true"></span>
+            <span>Cadastrando...</span>
+          } @else {
+            <span>Cadastrar Evento</span>
+          }
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

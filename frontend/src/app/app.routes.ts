@@ -2,9 +2,14 @@ import { Route } from '@angular/router';
 
 export const appRoutes: Route[] = [
   {
-    path: 'cfp',
+    path: 'talks/new',
     loadComponent: () =>
       import('./cfp-form/cfp-form.component').then((m) => m.CfpFormComponent),
+  },
+  {
+    path: 'event/new',
+    loadComponent: () =>
+      import('./event-form/event-form.component').then((m) => m.EventFormComponent),
   },
   {
     path: 'dashboard',
@@ -13,7 +18,7 @@ export const appRoutes: Route[] = [
   },
   {
     path: '',
-    redirectTo: 'cfp',
+    redirectTo: 'dashboard',
     pathMatch: 'full',
   },
 ];
