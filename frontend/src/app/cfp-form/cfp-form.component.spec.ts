@@ -4,6 +4,7 @@ import { CfpService } from '../cfp.service';
 import { of } from 'rxjs';
 import { By } from '@angular/platform-browser';
 import { SpeakerDTO } from '@cfp-platform/shared-types';
+import { provideRouter } from '@angular/router';
 
 describe('CfpFormComponent', () => {
   let component: CfpFormComponent;
@@ -22,7 +23,10 @@ describe('CfpFormComponent', () => {
 
     await TestBed.configureTestingModule({
       imports: [CfpFormComponent],
-      providers: [{ provide: CfpService, useValue: mockCfpService }],
+      providers: [
+        { provide: CfpService, useValue: mockCfpService },
+        provideRouter([]),
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(CfpFormComponent);

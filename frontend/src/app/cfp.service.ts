@@ -12,4 +12,8 @@ export class CfpService {
   submitCfp(speaker: Omit<SpeakerDTO, 'id'>): Observable<SpeakerDTO> {
     return this.http.post<SpeakerDTO>('/api/cfp', speaker);
   }
+
+  getCfps(): Observable<SpeakerDTO[]> {
+    return this.http.get<SpeakerDTO[]>('/api/cfp');
+  }
 }
