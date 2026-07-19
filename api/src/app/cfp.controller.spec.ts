@@ -32,6 +32,22 @@ describe('CfpController', () => {
       expect(result).toEqual(dto);
       expect(service.findAll()).toContainEqual(dto);
     });
+
+    it('should generate a UUID when id is missing', () => {
+      const dto: CreateSpeakerDto = {
+        id: undefined,
+        name: 'John Doe',
+        email: 'john@example.com',
+        talkTitle: 'NestJS and Signals',
+        isGDE: false,
+      };
+
+      const result = controller.create(dto);
+      expect(result.id).toBeDefined();
+      expect(typeof result.id).toBe('string');
+      expect(result.id.length).toBeGreaterThan(0);
+      expect(service.findAll()).toContainEqual(result);
+    });
   });
 
   describe('ValidationPipe', () => {
@@ -46,7 +62,7 @@ describe('CfpController', () => {
       validator = new ValidationPipe({ transform: true, whitelist: true });
     });
 
-    it('should pass validation with valid payload', async () => {
+    it('should pass validation with valid payload containing id', async () => {
       const validPayload = {
         id: '1',
         name: 'John Doe',
@@ -57,6 +73,19 @@ describe('CfpController', () => {
 
       const result = await validator.transform(validPayload, metadata);
       expect(result).toEqual(validPayload);
+    });
+
+    it('should pass validation without id', async () => {
+      const validPayloadWithoutId = {
+        name: 'John Doe',
+        email: 'john@example.com',
+        talkTitle: 'NestJS and Signals',
+        isGDE: false,
+      };
+
+      const result = await validator.transform(validPayloadWithoutId, metadata);
+      expect(result.id).toBeUndefined();
+      expect(result.name).toBe(validPayloadWithoutId.name);
     });
 
     it('should fail validation when email is invalid', async () => {
