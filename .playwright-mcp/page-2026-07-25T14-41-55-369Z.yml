@@ -1,0 +1,37 @@
+- generic [ref=e2]:
+  - navigation [ref=e3]:
+    - generic [ref=e4]:
+      - link "Cadastro de Evento" [active] [ref=e5] [cursor=pointer]:
+        - /url: /event/new
+      - link "Cadastro de Palestra" [ref=e6] [cursor=pointer]:
+        - /url: /talks/new
+      - link "Dashboard" [ref=e7] [cursor=pointer]:
+        - /url: /dashboard
+  - generic [ref=e26]:
+    - banner [ref=e27]:
+      - heading "Cadastro de Evento" [level=1] [ref=e28]
+      - paragraph [ref=e29]: Cadastre um novo local para o nosso evento de tecnologia.
+    - generic [ref=e30]:
+      - generic [ref=e31]:
+        - generic [ref=e32]:
+          - text: Nome do Evento
+          - generic [ref=e33]: "*"
+        - textbox "Nome do Evento" [ref=e35]:
+          - /placeholder: Digite o nome do evento
+      - generic [ref=e36]:
+        - generic [ref=e37]:
+          - text: Endereço
+          - generic [ref=e38]: "*"
+        - textbox "Endereço" [ref=e40]:
+          - /placeholder: Digite o endereço do local
+      - generic [ref=e41]:
+        - generic [ref=e42]:
+          - text: Capacidade
+          - generic [ref=e43]: "*"
+        - spinbutton "Capacidade" [ref=e45]
+      - generic [ref=e46]:
+        - generic [ref=e47]:
+          - text: Data do Evento
+          - generic [ref=e48]: "*"
+        - textbox "Data do Evento" [ref=e50]
+      - button "Cadastrar Evento" [disabled] [ref=e52]

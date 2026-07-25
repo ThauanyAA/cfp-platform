@@ -1,0 +1,18 @@
+- generic [ref=e2]:
+  - navigation [ref=e3]:
+    - generic [ref=e4]:
+      - link "Cadastro de Evento" [ref=e5] [cursor=pointer]:
+        - /url: /event/new
+      - link "Cadastro de Palestra" [ref=e6] [cursor=pointer]:
+        - /url: /talks/new
+      - link "Dashboard" [ref=e7] [cursor=pointer]:
+        - /url: /dashboard
+  - generic [ref=e10]:
+    - banner [ref=e11]:
+      - heading "Palestras Submetidas" [level=1] [ref=e12]
+      - paragraph [ref=e13]: Acompanhe as propostas enviadas para o Call for Papers.
+    - generic [ref=e14]:
+      - heading "Nenhuma proposta encontrada" [level=2] [ref=e17]
+      - paragraph [ref=e18]: Nenhuma palestra foi submetida até o momento. Seja o primeiro a enviar!
+    - button "Voltar para o formulário de submissão" [ref=e20] [cursor=pointer]:
+      - generic [ref=e23]: Voltar ao Formulário
